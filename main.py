@@ -3,24 +3,28 @@ class Fila:
     def __init__(self, quantum):
         self.processos = []
         self.quantum = quantum
-    
+
     def adicionar_processo(self, processo):
         self.processos.append(processo)
-    
+
     def executar_processo(self):
         if len(self.processos) > 0:
             processo = self.processos.pop(0)
             if processo["tempo_restante"] > self.quantum:
                 processo["tempo_restante"] -= self.quantum
-                print("Executando processo", processo["nome"], "por", self.quantum, "unidades de tempo.")
+                print("Executando processo",
+                      processo["nome"], "por", self.quantum, "unidades de tempo.")
                 self.processos.append(processo)
             else:
-                print("Executando processo", processo["nome"], "por", processo["tempo_restante"], "unidades de tempo.")
-    
+                print("Executando processo", processo["nome"], "por",
+                      processo["tempo_restante"], "unidades de tempo.")
+
     def vazia(self):
         return len(self.processos) == 0
 
 # Simulando o escalonamento de múltiplas filas
+
+
 def escalonar_filas(filas):
     tempo_total = 0
     while True:
@@ -32,6 +36,7 @@ def escalonar_filas(filas):
             continue
         fila_atual.executar_processo()
         tempo_total += 1
+
 
 # Criando as filas e adicionando processos
 fila1 = Fila(2)
